@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" role="img" aria-label="Wooden fishing boat at dawn off the Sulawesi coast">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0b2238" />
+      <stop offset="55%" stop-color="#1a3f5e" />
+      <stop offset="100%" stop-color="#2d6c8a" />
+    </linearGradient>
+    <radialGradient id="sun" cx="0.78" cy="0.45" r="0.18">
+      <stop offset="0%" stop-color="#ffd28a" stop-opacity="1" />
+      <stop offset="40%" stop-color="#ffb84d" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#ffb84d" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e5470" />
+      <stop offset="100%" stop-color="#0a1f33" />
+    </linearGradient>
+    <linearGradient id="hull" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7b3f1d" />
+      <stop offset="100%" stop-color="#3a1d0f" />
+    </linearGradient>
+    <linearGradient id="sail" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f4ddb0" />
+      <stop offset="100%" stop-color="#caa170" />
+    </linearGradient>
+  </defs>
+
+  <!-- sky -->
+  <rect width="800" height="320" fill="url(#sky)" />
+  <!-- sun -->
+  <circle cx="624" cy="216" r="56" fill="#ffd28a" opacity="0.95" />
+  <rect width="800" height="320" fill="url(#sun)" />
+
+  <!-- distant island -->
+  <path d="M 0 280 Q 80 240 180 260 T 360 270 L 360 320 L 0 320 Z" fill="#0a1f33" opacity="0.7" />
+  <path d="M 480 285 Q 560 255 660 270 T 800 280 L 800 320 L 480 320 Z" fill="#0a1f33" opacity="0.6" />
+
+  <!-- sea -->
+  <rect y="320" width="800" height="160" fill="url(#sea)" />
+
+  <!-- sun reflection on water -->
+  <ellipse cx="624" cy="330" rx="60" ry="3" fill="#ffd28a" opacity="0.5" />
+  <ellipse cx="624" cy="345" rx="80" ry="2" fill="#ffd28a" opacity="0.35" />
+  <ellipse cx="624" cy="362" rx="100" ry="2" fill="#ffd28a" opacity="0.22" />
+  <ellipse cx="624" cy="380" rx="120" ry="1.5" fill="#ffd28a" opacity="0.14" />
+
+  <!-- waves -->
+  <g stroke="#9aafc4" stroke-opacity="0.25" fill="none" stroke-width="1.2">
+    <path d="M 40 350 q 20 -5 40 0 t 40 0 t 40 0" />
+    <path d="M 200 370 q 20 -5 40 0 t 40 0 t 40 0" />
+    <path d="M 380 360 q 20 -5 40 0 t 40 0" />
+    <path d="M 60 410 q 25 -6 50 0 t 50 0 t 50 0" />
+    <path d="M 460 415 q 30 -6 60 0 t 60 0" />
+  </g>
+
+  <!-- boat -->
+  <g transform="translate(170 305)">
+    <!-- hull -->
+    <path d="M 0 60 Q 30 95 130 95 Q 230 95 270 60 L 240 50 L 30 50 Z" fill="url(#hull)" />
+    <!-- hull stripe -->
+    <path d="M 18 56 L 252 56" stroke="#ffb84d" stroke-width="2" />
+    <!-- cabin -->
+    <rect x="90" y="22" width="80" height="30" fill="#3a2210" />
+    <rect x="98" y="28" width="20" height="14" fill="#7ec1e0" opacity="0.7" />
+    <rect x="124" y="28" width="20" height="14" fill="#7ec1e0" opacity="0.7" />
+    <rect x="148" y="28" width="14" height="14" fill="#7ec1e0" opacity="0.7" />
+    <!-- mast -->
+    <rect x="162" y="-50" width="3" height="76" fill="#3a2210" />
+    <!-- sail -->
+    <path d="M 165 -50 Q 240 -28 220 24 L 165 24 Z" fill="url(#sail)" stroke="#8a6b3e" stroke-width="0.8" />
+    <!-- bow flag -->
+    <path d="M 30 -8 L 30 22 L 35 22 L 35 -8 Z" fill="#3a2210" />
+    <path d="M 35 -8 L 60 -2 L 35 4 Z" fill="#ff6b6b" />
+  </g>
+
+  <!-- boat wake -->
+  <path d="M 130 410 Q 280 430 460 410" stroke="#9aafc4" stroke-opacity="0.4" stroke-width="1.5" fill="none" />
+  <path d="M 150 425 Q 290 440 440 425" stroke="#9aafc4" stroke-opacity="0.25" stroke-width="1" fill="none" />
+
+  <!-- birds -->
+  <g stroke="#e9f0f6" stroke-width="1.5" fill="none" opacity="0.7">
+    <path d="M 480 110 q 6 -6 12 0 q 6 -6 12 0" />
+    <path d="M 540 90 q 5 -5 10 0 q 5 -5 10 0" />
+    <path d="M 510 140 q 4 -4 8 0 q 4 -4 8 0" />
+  </g>
+</svg>

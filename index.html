@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nelayan Trip Agent — Autonomous AI for Indonesia's traditional fishers</title>
+    <meta
+      name="description"
+      content="An autonomous agent that plans, escorts, and closes a fisher's 3-day trip — built for Indonesia's 1.6 million traditional small-boat crews."
+    />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Nelayan Trip Agent" />
+    <meta
+      property="og:description"
+      content="An autonomous AI agent for Indonesia's traditional small-boat fishers. Plans the trip, watches the boat, closes the loop at the auction dock."
+    />
+    <meta property="og:image" content="assets/hero.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Nelayan Trip Agent" />
+    <meta
+      name="twitter:description"
+      content="Autonomous AI agent for Indonesia's small-boat fishers — three-phase loop, offline-first, BMKG/TPI integrated."
+    />
+    <meta name="twitter:image" content="assets/hero.svg" />
+
+    <link rel="stylesheet" href="assets/style.css?v=3" />
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="nav-inner">
+        <div class="brand">
+          <span class="brand-dot"></span>
+          <span>Nelayan Trip Agent</span>
+        </div>
+        <div class="nav-links">
+          <a href="#persona" data-lang-en class="active">Persona</a>
+          <a href="#persona" data-lang-id>Persona</a>
+          <a href="#persona" data-lang-cn>角色</a>
+
+          <a href="#flow" data-lang-en class="active">Agent Loop</a>
+          <a href="#flow" data-lang-id>Alur Agent</a>
+          <a href="#flow" data-lang-cn>智能体循环</a>
+
+          <a href="#cost" data-lang-en class="active">Cost Routing</a>
+          <a href="#cost" data-lang-id>Routing Biaya</a>
+          <a href="#cost" data-lang-cn>成本路由</a>
+
+          <a href="demo/" data-lang-en class="active">Demo</a>
+          <a href="demo/" data-lang-id>Demo</a>
+          <a href="demo/" data-lang-cn>演示</a>
+        </div>
+        <div class="lang-toggle" role="tablist" aria-label="Language">
+          <button data-set="en" class="active">EN</button>
+          <button data-set="id">ID</button>
+          <button data-set="cn">中</button>
+        </div>
+      </div>
+    </nav>
+
+    <header class="hero wrap">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow" data-lang-en class="active">Concept stage · Pre-MVP</span>
+          <span class="eyebrow" data-lang-id>Tahap konsep · Pra-MVP</span>
+          <span class="eyebrow" data-lang-cn>概念阶段 · MVP之前</span>
+
+          <h1 data-lang-en class="active">
+            An <span class="accent">autonomous agent</span><br />
+            for Indonesia's small-boat fishers.
+          </h1>
+          <h1 data-lang-id>
+            <span class="accent">Agent otonom</span><br />
+            untuk nelayan tradisional Indonesia.
+          </h1>
+          <h1 data-lang-cn>
+            为印尼传统渔民打造的<br /><span class="accent">自主智能体</span>。
+          </h1>
+
+          <p class="lede" data-lang-en class="active">
+            Plans the trip before launch, watches the boat while at sea, and closes
+            the loop at the auction dock. One agent, three phases, designed around
+            offline-first reality and the price of every kilo of fuel.
+          </p>
+          <p class="lede" data-lang-id>
+            Rencanakan trip sebelum berangkat, awasi kapal selama di laut, dan tutup
+            loop di TPI. Satu agent, tiga fase, dirancang untuk kondisi offline dan
+            harga tiap liter solar.
+          </p>
+          <p class="lede" data-lang-cn>
+            出海前规划行程，海上自动监护，TPI 拍卖码头闭环结算。一个智能体，三个阶段，为离线现实和每升柴油成本而设计。
+          </p>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="demo/">
+              <span data-lang-en class="active">Try the demo →</span>
+              <span data-lang-id>Coba demo →</span>
+              <span data-lang-cn>试用演示 →</span>
+            </a>
+            <a class="btn btn-ghost" href="#flow">
+              <span data-lang-en class="active">How the loop works</span>
+              <span data-lang-id>Cara kerja loop</span>
+              <span data-lang-cn>循环原理</span>
+            </a>
+          </div>
+        </div>
+        <div class="hero-art">
+          <img src="assets/hero.svg" alt="A small wooden fishing boat at dawn off the Sulawesi coast." />
+        </div>
+      </div>
+    </header>
+
+    <section id="persona" class="wrap">
+      <h2 data-lang-en class="active">The fisher we're building for</h2>
+      <h2 data-lang-id>Nelayan yang kami bangun ini untuknya</h2>
+      <h2 data-lang-cn>我们的服务对象</h2>
+
+      <p class="sub" data-lang-en class="active">
+        Not a generic SMB. A specific human, on a specific stretch of coast, on a
+        specific kind of boat. If the agent doesn't help him, it doesn't ship.
+      </p>
+      <p class="sub" data-lang-id>
+        Bukan UKM generik. Manusia konkret, di pesisir konkret, di kapal konkret.
+        Kalau agent gak bantu dia, gak ship.
+      </p>
+      <p class="sub" data-lang-cn>
+        不是泛泛的小微企业。一个具体的人，一片具体的海岸，一艘具体的船。如果智能体帮不到他，就不发布。
+      </p>
+
+      <article class="persona">
+        <div class="persona-avatar" aria-hidden="true">
+          <img src="assets/persona.svg" alt="" />
+        </div>
+        <div>
+          <h3 class="persona-name">Pak Yusuf, 45</h3>
+          <p class="persona-sub">Pangkep, South Sulawesi · 7 GT wooden boat · 2 crew</p>
+
+          <p class="persona-quote" data-lang-en class="active">
+            "Three days at sea. If I get the wind wrong, I burn 80 liters for nothing.
+            If I land at the wrong hour, the broker pays me 30% under price."
+          </p>
+          <p class="persona-quote" data-lang-id>
+            "Tiga hari di laut. Kalau salah baca angin, 80 liter solar mubazir.
+            Kalau salah jam darat, broker bayar 30% di bawah harga."
+          </p>
+          <p class="persona-quote" data-lang-cn>
+            "海上三天。风向看错，80 升柴油白烧。靠岸时机不对，鱼贩压价 30%。"
+          </p>
+
+          <div class="persona-stats">
+            <div class="persona-stat">
+              <strong>1.6M</strong>
+              <span data-lang-en class="active">small-boat fishers in Indonesia</span>
+              <span data-lang-id>nelayan kecil di Indonesia</span>
+              <span data-lang-cn>印尼小型渔船</span>
+            </div>
+            <div class="persona-stat">
+              <strong>60%</strong>
+              <span data-lang-en class="active">below national poverty line</span>
+              <span data-lang-id>di bawah garis kemiskinan</span>
+              <span data-lang-cn>低于贫困线</span>
+            </div>
+            <div class="persona-stat">
+              <strong>~Rp 4M</strong>
+              <span data-lang-en class="active">avg fuel cost / 3-day trip</span>
+              <span data-lang-id>biaya solar rata-rata / trip 3 hari</span>
+              <span data-lang-cn>3 天行程平均油费</span>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section id="flow" class="wrap">
+      <h2 data-lang-en class="active">The agent loop — three phases, one trip</h2>
+      <h2 data-lang-id>Loop agent — tiga fase, satu trip</h2>
+      <h2 data-lang-cn>智能体循环 — 一次行程三个阶段</h2>
+
+      <p class="sub" data-lang-en class="active">
+        This isn't a chatbot answering questions. It's an autonomous loop with
+        tools, schedules, and decisions that fire whether or not the fisher is
+        looking at his phone.
+      </p>
+      <p class="sub" data-lang-id>
+        Ini bukan chatbot tanya-jawab. Ini loop otonom dengan tools, jadwal, dan
+        keputusan yang jalan walaupun nelayan gak buka HP.
+      </p>
+      <p class="sub" data-lang-cn>
+        这不是问答聊天机器人，而是带工具、调度和决策的自主循环 — 即使渔民不看手机也持续运转。
+      </p>
+
+      <div class="phases">
+        <article class="phase">
+          <div class="phase-badge">01 · Pre-trip</div>
+          <h3 data-lang-en class="active">Plan the run</h3>
+          <h3 data-lang-id>Rencanakan trip</h3>
+          <h3 data-lang-cn>出海规划</h3>
+
+          <p data-lang-en class="active">
+            Pull BMKG weather, current vectors, and tide tables. Cross with the
+            fisher's voice-logged catch history. Output: launch window, fuel
+            estimate, recommended bearings.
+          </p>
+          <p data-lang-id>
+            Tarik cuaca BMKG, vektor arus, jadwal pasang. Silang dengan catat
+            tangkapan suara nelayan. Output: window berangkat, estimasi solar,
+            rekomendasi rute.
+          </p>
+          <p data-lang-cn>
+            读取 BMKG 天气、洋流向量、潮汐时刻，结合渔民语音记录的捕捞历史。输出：出航窗口、油耗估算、推荐航向。
+          </p>
+
+          <div class="phase-tools">
+            <span class="tool-chip">bmkg.go.id</span>
+            <span class="tool-chip">copernicus marine</span>
+            <span class="tool-chip">voice-log RAG</span>
+            <span class="tool-chip">fuel calc</span>
+          </div>
+        </article>
+
+        <article class="phase">
+          <div class="phase-badge">02 · At sea</div>
+          <h3 data-lang-en class="active">Watch the boat</h3>
+          <h3 data-lang-id>Awasi kapal</h3>
+          <h3 data-lang-cn>海上守护</h3>
+
+          <p data-lang-en class="active">
+            Scheduled SMS heartbeats home with GPS pin. Weather change alerts on
+            satellite SMS gateway. Mid-trip catch logging via voice — no
+            keyboard, wet hands, sun glare.
+          </p>
+          <p data-lang-id>
+            Heartbeat SMS terjadwal ke keluarga + pin GPS. Alert perubahan cuaca
+            via gateway SMS satelit. Log tangkapan tengah-trip via suara — tanpa
+            keyboard, tangan basah, silau matahari.
+          </p>
+          <p data-lang-cn>
+            定时短信心跳与 GPS 位置发送给家人。卫星短信网关推送天气突变预警。语音记录捕捞 — 无需键盘，湿手日晒皆可。
+          </p>
+
+          <div class="phase-tools">
+            <span class="tool-chip">SMS gateway</span>
+            <span class="tool-chip">whisper-id</span>
+            <span class="tool-chip">offline cache</span>
+            <span class="tool-chip">geo-fence</span>
+          </div>
+        </article>
+
+        <article class="phase">
+          <div class="phase-badge">03 · Post-trip</div>
+          <h3 data-lang-en class="active">Close the loop</h3>
+          <h3 data-lang-id>Tutup loop</h3>
+          <h3 data-lang-cn>闭环结算</h3>
+
+          <p data-lang-en class="active">
+            Watch TPI auction prices across nearby ports. Recommend optimal
+            landing time and dock. Auto-draft a buyer message with the haul
+            list. Track expense vs. revenue per trip.
+          </p>
+          <p data-lang-id>
+            Pantau harga TPI di pelabuhan terdekat. Rekomendasi jam dan dermaga
+            optimal. Auto-draft pesan ke pembeli dengan list hasil. Track
+            pengeluaran vs pendapatan per trip.
+          </p>
+          <p data-lang-cn>
+            实时监控周边港口 TPI 拍卖价。推荐最佳靠岸时间与码头。自动起草渔获清单买家消息。逐次追踪支出与收入。
+          </p>
+
+          <div class="phase-tools">
+            <span class="tool-chip">TPI scraper</span>
+            <span class="tool-chip">koperasi API</span>
+            <span class="tool-chip">WA draft</span>
+            <span class="tool-chip">P&amp;L log</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="cost" class="wrap">
+      <h2 data-lang-en class="active">Cost-tier routing — built for cheap inference</h2>
+      <h2 data-lang-id>Routing biaya — dirancang untuk inferensi murah</h2>
+      <h2 data-lang-cn>成本路由 — 为低成本推理而设计</h2>
+
+      <p class="sub" data-lang-en class="active">
+        Most of what this agent does is lookup, format, and schedule — work that
+        belongs on a small, fast, cheap model. Heavy reasoning fires only when
+        the trip needs it.
+      </p>
+      <p class="sub" data-lang-id>
+        Mayoritas pekerjaan agent ini adalah lookup, format, jadwal — kerjaan
+        untuk model kecil, cepat, murah. Reasoning berat cuma trigger kalau trip
+        butuh.
+      </p>
+      <p class="sub" data-lang-cn>
+        智能体大部分工作是查询、格式化和调度 — 适合小而快、低成本的模型。仅在行程需要时才触发重推理。
+      </p>
+
+      <div class="cost-tier">
+        <div class="tier-bar" role="img" aria-label="Cost tier split">
+          <div class="tier-cheap">82% · cheap tier</div>
+          <div class="tier-smart">18% · smart</div>
+        </div>
+        <div class="tier-legend">
+          <div>
+            <strong>Cheap tier (82%)</strong>
+            <span data-lang-en class="active">
+              Fetch BMKG. Format SMS. Compute fuel. Watch TPI prices. Log a
+              voice memo. Routine, structured, latency-tolerant.
+            </span>
+            <span data-lang-id>
+              Fetch BMKG. Format SMS. Hitung solar. Pantau harga TPI. Log voice
+              memo. Rutin, terstruktur, toleran latency.
+            </span>
+            <span data-lang-cn>
+              获取 BMKG、格式化短信、计算油耗、监控 TPI 价格、语音备忘记录。日常、结构化、容忍延迟。
+            </span>
+          </div>
+          <div>
+            <strong>Smart tier (18%)</strong>
+            <span data-lang-en class="active">
+              Cross-reference forecast vs. catch history. Decide
+              abort-vs-continue when weather shifts. Negotiate landing-window
+              tradeoff between fuel cost and TPI price.
+            </span>
+            <span data-lang-id>
+              Silang ramalan vs catat tangkapan. Putus abort-atau-lanjut saat
+              cuaca berubah. Negosiasi window darat antara biaya solar dan harga
+              TPI.
+            </span>
+            <span data-lang-cn>
+              结合天气预报与捕捞历史。气候突变时决定中止或继续。在油耗与 TPI 价格间权衡靠岸窗口。
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="arch" class="wrap">
+      <h2 data-lang-en class="active">Architecture sketch</h2>
+      <h2 data-lang-id>Sketsa arsitektur</h2>
+      <h2 data-lang-cn>架构草图</h2>
+
+      <p class="sub" data-lang-en class="active">
+        Offline-first device runtime. The phone caches everything; the cloud is
+        a sync target, not a hard dependency.
+      </p>
+      <p class="sub" data-lang-id>
+        Runtime offline-first di HP. HP cache semua; cloud cuma target sync,
+        bukan dependency keras.
+      </p>
+      <p class="sub" data-lang-cn>
+        离线优先的设备端运行时。手机缓存一切，云端只是同步目标，不是硬依赖。
+      </p>
+
+      <div class="arch">
+        <img src="assets/architecture.svg" alt="System architecture diagram: phone offline-first runtime synced to cloud orchestrator that calls cheap and smart LLM tiers." />
+      </div>
+    </section>
+
+    <section id="honest" class="wrap">
+      <h2 data-lang-en class="active">What's honest about today</h2>
+      <h2 data-lang-id>Apa yang jujur soal hari ini</h2>
+      <h2 data-lang-cn>当前阶段的实话</h2>
+
+      <p class="sub" data-lang-en class="active">
+        This page is the project; the project is at concept stage. Here's what's
+        actually there and what isn't.
+      </p>
+      <p class="sub" data-lang-id>
+        Halaman ini = project; project di tahap konsep. Ini yang nyata dan yang
+        belum.
+      </p>
+      <p class="sub" data-lang-cn>
+        本页就是项目本身；项目处于概念阶段。下面是真实情况与尚未实现的部分。
+      </p>
+
+      <div class="honest">
+        <h3>Honest framing</h3>
+        <ul>
+          <li data-lang-en class="active">
+            <strong>What exists today:</strong> this landing, an interactive
+            scripted demo of the 3-phase loop, a public BMKG API probe, and a
+            costed routing plan. No production users yet.
+          </li>
+          <li data-lang-id>
+            <strong>Yang ada hari ini:</strong> landing ini, demo interaktif
+            3-fase yang ter-skrip, probe API BMKG public, dan rencana routing
+            cost. Belum ada user produksi.
+          </li>
+          <li data-lang-cn>
+            <strong>当前已有：</strong>本落地页、3 阶段交互脚本演示、BMKG 公共 API 探测、成本路由计划。尚无生产用户。
+          </li>
+
+          <li data-lang-en class="active">
+            <strong>What's intentionally not in scope:</strong> sonar
+            integration (smallholder boats don't carry it), sat-phone hardware
+            (we lean on cheap GSM SMS gateways), and any kind of marine safety
+            authority claim.
+          </li>
+          <li data-lang-id>
+            <strong>Yang sengaja gak masuk scope:</strong> integrasi sonar
+            (kapal kecil gak punya), hardware sat-phone (kami pakai gateway SMS
+            GSM murah), dan claim jadi otoritas keselamatan laut.
+          </li>
+          <li data-lang-cn>
+            <strong>故意不在范围内：</strong>声纳集成（小船没有）、卫星电话硬件（采用廉价 GSM 短信网关）、任何形式的海事安全权威声明。
+          </li>
+
+          <li data-lang-en class="active">
+            <strong>The biggest open risk:</strong> connectivity at sea is
+            genuinely unreliable. Our design treats it as a constraint
+            (offline-first cache + SMS fallback) rather than a problem we'll
+            "solve later".
+          </li>
+          <li data-lang-id>
+            <strong>Risiko terbuka terbesar:</strong> konektivitas di laut
+            beneran goyang. Desain kami treat ini sebagai constraint
+            (cache offline-first + fallback SMS), bukan problem yang
+            "diberesin nanti".
+          </li>
+          <li data-lang-cn>
+            <strong>最大开放风险：</strong>海上连接确实不稳定。我们的设计把它当作约束（离线优先缓存 + 短信兜底），而非"以后再解决"的问题。
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="roadmap" class="wrap">
+      <h2 data-lang-en class="active">Roadmap</h2>
+      <h2 data-lang-id>Roadmap</h2>
+      <h2 data-lang-cn>路线图</h2>
+
+      <div class="roadmap">
+        <div class="milestone done">
+          <div class="mark"></div>
+          <h4>M0 · Concept</h4>
+          <p data-lang-en class="active">Persona, agent loop, cost-tier plan, demo skeleton.</p>
+          <p data-lang-id>Persona, loop agent, rencana cost-tier, kerangka demo.</p>
+          <p data-lang-cn>角色、智能体循环、成本计划、演示原型。</p>
+        </div>
+        <div class="milestone now">
+          <div class="mark"></div>
+          <h4>M1 · Field probe</h4>
+          <p data-lang-en class="active">Two real fishers in Pangkep test the pre-trip plan against an actual launch decision. Voice log + paper diary.</p>
+          <p data-lang-id>Dua nelayan asli Pangkep uji rencana pre-trip vs keputusan berangkat sebenarnya. Voice log + diary kertas.</p>
+          <p data-lang-cn>Pangkep 两位真实渔民对照实际出海决策测试出航规划。语音记录 + 纸质日志。</p>
+        </div>
+        <div class="milestone">
+          <div class="mark"></div>
+          <h4>M2 · Closed beta</h4>
+          <p data-lang-en class="active">10 boats. Full 3-phase loop on a phone. SMS fallback live.</p>
+          <p data-lang-id>10 kapal. Loop 3-fase penuh di HP. Fallback SMS aktif.</p>
+          <p data-lang-cn>10 艘船，手机完整运行 3 阶段循环。短信兜底上线。</p>
+        </div>
+        <div class="milestone">
+          <div class="mark"></div>
+          <h4>M3 · Koperasi rollout</h4>
+          <p data-lang-en class="active">100 boats via a fishing co-op partner; TPI integration shipping daily P&amp;L.</p>
+          <p data-lang-id>100 kapal via mitra koperasi nelayan; integrasi TPI kirim P&amp;L harian.</p>
+          <p data-lang-cn>通过渔业合作社推广 100 艘船，TPI 集成日报盈亏。</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="wrap">
+      <div data-lang-en class="active">
+        Built for Indonesia's coast. Concept stage — feedback welcome.
+      </div>
+      <div data-lang-id>
+        Dibangun untuk pesisir Indonesia. Tahap konsep — feedback ditunggu.
+      </div>
+      <div data-lang-cn>
+        为印尼海岸而建。概念阶段 — 欢迎反馈。
+      </div>
+      <div class="small">v0.1 · concept · static demo</div>
+    </footer>
+
+    <script src="assets/i18n.js?v=2"></script>
+  </body>
+</html>

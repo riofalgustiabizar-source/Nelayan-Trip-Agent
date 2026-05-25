@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Demo · Nelayan Trip Agent</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+    <link rel="stylesheet" href="../assets/style.css?v=3" />
+    <link rel="stylesheet" href="demo.css?v=2" />
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="nav-inner">
+        <div class="brand">
+          <span class="brand-dot"></span>
+          <span>Nelayan Trip Agent</span>
+        </div>
+        <div class="nav-links">
+          <a href="../">
+            <span data-lang-en class="active">← Home</span>
+            <span data-lang-id>← Beranda</span>
+            <span data-lang-cn>← 首页</span>
+          </a>
+        </div>
+        <div class="lang-toggle" role="tablist" aria-label="Language">
+          <button data-set="en" class="active">EN</button>
+          <button data-set="id">ID</button>
+          <button data-set="cn">中</button>
+        </div>
+      </div>
+    </nav>
+
+    <main class="wrap" style="padding-top: 36px;">
+      <span class="eyebrow" data-lang-en class="active">Scripted demo · No live API calls</span>
+      <span class="eyebrow" data-lang-id>Demo ter-skrip · Tanpa API live</span>
+      <span class="eyebrow" data-lang-cn>脚本演示 · 无实时API</span>
+
+      <h1 style="font-size: clamp(28px, 4vw, 40px); margin-top: 14px;">
+        <span data-lang-en class="active">Walk a trip with the agent.</span>
+        <span data-lang-id>Jalani satu trip bareng agent.</span>
+        <span data-lang-cn>跟随智能体走完一次行程。</span>
+      </h1>
+
+      <p class="lede" data-lang-en class="active">
+        Three phases. Pick a scenario, hit run, and watch the loop fire — tool
+        calls, decisions, SMS, the lot. Phone view on the left mirrors what Pak
+        Yusuf actually sees.
+      </p>
+      <p class="lede" data-lang-id>
+        Tiga fase. Pilih skenario, tekan run, lihat loop jalan — tool call,
+        keputusan, SMS, semua. Tampilan HP di kiri persis yang Pak Yusuf lihat.
+      </p>
+      <p class="lede" data-lang-cn>
+        三个阶段。选场景、点运行，观察循环触发 — 工具调用、决策、短信，全部呈现。左侧手机视图就是 Pak Yusuf 看到的画面。
+      </p>
+
+      <details class="provider-panel" id="provider-panel">
+        <summary>
+          <span class="prov-icon">⚙</span>
+          <span data-lang-en class="active">Provider settings · scripted by default</span>
+          <span data-lang-id>Setting provider · default scripted</span>
+          <span data-lang-cn>提供商设置 · 默认脚本</span>
+          <span class="prov-mode-pill" id="prov-mode-pill">SCRIPTED</span>
+        </summary>
+        <div class="prov-grid">
+          <label class="prov-mode">
+            <span data-lang-en class="active">Mode</span>
+            <span data-lang-id>Mode</span>
+            <span data-lang-cn>模式</span>
+            <select id="prov-mode">
+              <option value="scripted">Scripted (no key needed)</option>
+              <option value="live">Live API (bring your own key)</option>
+            </select>
+          </label>
+          <label>
+            <span data-lang-en class="active">Provider preset</span>
+            <span data-lang-id>Preset provider</span>
+            <span data-lang-cn>提供商预设</span>
+            <select id="prov-preset">
+              <option value="mimo">Xiaomi MiMo</option>
+              <option value="openai">OpenAI</option>
+              <option value="groq">Groq</option>
+              <option value="xai">xAI</option>
+              <option value="together">Together AI</option>
+              <option value="custom">Custom (OpenAI-compatible)</option>
+            </select>
+          </label>
+          <label>
+            <span data-lang-en class="active">Base URL</span>
+            <span data-lang-id>Base URL</span>
+            <span data-lang-cn>基础 URL</span>
+            <input type="text" id="prov-base" placeholder="https://api.example.com/v1" />
+          </label>
+          <label>
+            <span data-lang-en class="active">Model</span>
+            <span data-lang-id>Model</span>
+            <span data-lang-cn>模型</span>
+            <input type="text" id="prov-model" placeholder="model-id" />
+          </label>
+          <label class="prov-key">
+            <span data-lang-en class="active">API key (browser only)</span>
+            <span data-lang-id>API key (cuma di browser)</span>
+            <span data-lang-cn>API 密钥 (仅浏览器内)</span>
+            <input type="password" id="prov-key" placeholder="sk-..." autocomplete="off" />
+          </label>
+        </div>
+        <p class="prov-disclaimer">
+          <span data-lang-en class="active">
+            Your key stays in this browser tab. Calls go directly from the
+            browser to the provider — we don't proxy or log anything. CORS must
+            be enabled on the provider; if your endpoint blocks browser calls,
+            stay in scripted mode.
+          </span>
+          <span data-lang-id>
+            API key tetap di tab browser ini. Call pergi langsung dari browser
+            ke provider — kami tidak proxy atau log apa-apa. Provider wajib
+            aktifkan CORS; kalau endpoint blok call dari browser, pakai mode
+            scripted.
+          </span>
+          <span data-lang-cn>
+            您的密钥只保存在此浏览器标签页中。请求直接从浏览器发往提供商，我们不代理也不记录。提供商必须启用
+            CORS；若端点阻止浏览器请求，请保持脚本模式。
+          </span>
+        </p>
+      </details>
+
+      <div class="demo-shell">
+        <aside class="phone" aria-label="Phone screen">
+          <div class="phone-bar">
+            <span data-lang-en class="active">Pak Yusuf · 4G ▂▄</span>
+            <span data-lang-id>Pak Yusuf · 4G ▂▄</span>
+            <span data-lang-cn>Pak Yusuf · 4G ▂▄</span>
+          </div>
+          <div class="phone-screen" id="phone-screen">
+            <div class="bubble bubble-agent" data-lang-en class="active">
+              Good morning, Pak Yusuf. Pick a scenario on the right to begin.
+            </div>
+            <div class="bubble bubble-agent" data-lang-id>
+              Selamat pagi Pak Yusuf. Pilih skenario di kanan untuk mulai.
+            </div>
+            <div class="bubble bubble-agent" data-lang-cn>
+              Pak Yusuf 早上好。请在右侧选择场景以开始。
+            </div>
+          </div>
+        </aside>
+
+        <section class="controls">
+          <div class="tab-row" role="tablist">
+            <button class="tab-btn active" data-tab="pre">
+              <span data-lang-en class="active">01 · Pre-trip</span>
+              <span data-lang-id>01 · Pre-trip</span>
+              <span data-lang-cn>01 · 出海前</span>
+            </button>
+            <button class="tab-btn" data-tab="sea">
+              <span data-lang-en class="active">02 · At sea</span>
+              <span data-lang-id>02 · Di laut</span>
+              <span data-lang-cn>02 · 海上</span>
+            </button>
+            <button class="tab-btn" data-tab="post">
+              <span data-lang-en class="active">03 · Post-trip</span>
+              <span data-lang-id>03 · Post-trip</span>
+              <span data-lang-cn>03 · 返港后</span>
+            </button>
+          </div>
+
+          <!-- Pre-trip pane -->
+          <div class="tab-pane active" data-pane="pre">
+            <div class="scenario">
+              <h3 data-lang-en class="active">Pre-trip planner</h3>
+              <h3 data-lang-id>Perencana pre-trip</h3>
+              <h3 data-lang-cn>出海前规划</h3>
+
+              <p class="scn-sub" data-lang-en class="active">
+                The agent reads BMKG forecast, currents, and Yusuf's voice-logged
+                catch history, then proposes a launch decision.
+              </p>
+              <p class="scn-sub" data-lang-id>
+                Agent baca ramalan BMKG, arus, dan log tangkapan suara Yusuf,
+                lalu usulkan keputusan berangkat.
+              </p>
+              <p class="scn-sub" data-lang-cn>
+                智能体读取 BMKG 预报、洋流、Yusuf 的语音捕捞日志，然后给出出海建议。
+              </p>
+
+              <div class="input-row">
+                <label>
+                  <span data-lang-en class="active">Departure date</span>
+                  <span data-lang-id>Tanggal berangkat</span>
+                  <span data-lang-cn>出海日期</span>
+                  <input type="date" id="pre-date" />
+                </label>
+                <label>
+                  <span data-lang-en class="active">Trip length</span>
+                  <span data-lang-id>Lama trip</span>
+                  <span data-lang-cn>行程时长</span>
+                  <select id="pre-len">
+                    <option value="2">2 days</option>
+                    <option value="3" selected>3 days</option>
+                    <option value="4">4 days</option>
+                  </select>
+                </label>
+                <label>
+                  <span data-lang-en class="active">Target species</span>
+                  <span data-lang-id>Target ikan</span>
+                  <span data-lang-cn>目标鱼种</span>
+                  <select id="pre-species">
+                    <option value="tongkol">Tongkol (skipjack)</option>
+                    <option value="kembung">Kembung (mackerel)</option>
+                    <option value="cakalang">Cakalang (skipjack tuna)</option>
+                  </select>
+                </label>
+                <label>
+                  <span data-lang-en class="active">Fuel on board (L)</span>
+                  <span data-lang-id>Solar onboard (L)</span>
+                  <span data-lang-cn>船上柴油 (升)</span>
+                  <input type="number" id="pre-fuel" value="200" min="50" max="500" />
+                </label>
+              </div>
+
+              <button class="run-btn" id="run-pre">
+                <span data-lang-en class="active">▶ Run pre-trip plan</span>
+                <span data-lang-id>▶ Jalankan plan pre-trip</span>
+                <span data-lang-cn>▶ 运行出海前规划</span>
+              </button>
+
+              <div class="trace-box" id="trace-pre">
+                <div class="empty" data-lang-en class="active">Tool trace will appear here.</div>
+                <div class="empty" data-lang-id>Trace tool akan muncul di sini.</div>
+                <div class="empty" data-lang-cn>工具调用追踪将显示在此。</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- At-sea pane -->
+          <div class="tab-pane" data-pane="sea">
+            <div class="scenario">
+              <h3 data-lang-en class="active">At-sea watcher</h3>
+              <h3 data-lang-id>Pemantau di laut</h3>
+              <h3 data-lang-cn>海上守护</h3>
+
+              <p class="scn-sub" data-lang-en class="active">
+                Hour 14 of the trip. Pick what just happened and watch the agent
+                react autonomously — heartbeat SMS, weather alert, or voice-log
+                capture.
+              </p>
+              <p class="scn-sub" data-lang-id>
+                Jam ke-14 trip. Pilih kejadian dan lihat agent reaksi otonom —
+                SMS heartbeat, alert cuaca, atau capture log suara.
+              </p>
+              <p class="scn-sub" data-lang-cn>
+                行程第 14 小时。选择突发事件，观察智能体自主响应 — 心跳短信、天气预警或语音记录捕获。
+              </p>
+
+              <div class="input-row" style="grid-template-columns: 1fr;">
+                <label>
+                  <span data-lang-en class="active">Event</span>
+                  <span data-lang-id>Kejadian</span>
+                  <span data-lang-cn>事件</span>
+                  <select id="sea-event">
+                    <option value="heartbeat">Scheduled heartbeat (every 4h)</option>
+                    <option value="storm">BMKG: storm front in 6h</option>
+                    <option value="catch">Voice log: "200 kg tongkol, area Spermonde"</option>
+                    <option value="lowfuel">Fuel sensor: 35% remaining</option>
+                  </select>
+                </label>
+              </div>
+
+              <button class="run-btn" id="run-sea">
+                <span data-lang-en class="active">▶ Trigger event</span>
+                <span data-lang-id>▶ Picu event</span>
+                <span data-lang-cn>▶ 触发事件</span>
+              </button>
+
+              <div class="trace-box" id="trace-sea">
+                <div class="empty" data-lang-en class="active">Tool trace will appear here.</div>
+                <div class="empty" data-lang-id>Trace tool akan muncul di sini.</div>
+                <div class="empty" data-lang-cn>工具调用追踪将显示在此。</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Post-trip pane -->
+          <div class="tab-pane" data-pane="post">
+            <div class="scenario">
+              <h3 data-lang-en class="active">Post-trip dock advisor</h3>
+              <h3 data-lang-id>Penasihat dermaga post-trip</h3>
+              <h3 data-lang-cn>返港码头顾问</h3>
+
+              <p class="scn-sub" data-lang-en class="active">
+                Hauls in the hold, 4 hours from shore. Agent compares prices
+                across nearby TPI ports, picks the optimal landing window,
+                drafts the buyer message.
+              </p>
+              <p class="scn-sub" data-lang-id>
+                Hasil tangkapan di palka, 4 jam dari darat. Agent banding harga
+                TPI sekitar, pilih window darat optimal, draft pesan ke pembeli.
+              </p>
+              <p class="scn-sub" data-lang-cn>
+                舱内有渔获，距岸 4 小时。智能体对比周边 TPI 港口价格，选择最佳靠岸窗口，起草买家消息。
+              </p>
+
+              <div class="input-row">
+                <label>
+                  <span data-lang-en class="active">Tongkol catch (kg)</span>
+                  <span data-lang-id>Tangkapan tongkol (kg)</span>
+                  <span data-lang-cn>鲣鱼渔获 (kg)</span>
+                  <input type="number" id="post-tongkol" value="180" min="0" max="2000" />
+                </label>
+                <label>
+                  <span data-lang-en class="active">Cakalang catch (kg)</span>
+                  <span data-lang-id>Tangkapan cakalang (kg)</span>
+                  <span data-lang-cn>鲣鱼属渔获 (kg)</span>
+                  <input type="number" id="post-cakalang" value="60" min="0" max="2000" />
+                </label>
+              </div>
+
+              <button class="run-btn" id="run-post">
+                <span data-lang-en class="active">▶ Run dock advisor</span>
+                <span data-lang-id>▶ Jalankan penasihat dermaga</span>
+                <span data-lang-cn>▶ 运行码头顾问</span>
+              </button>
+
+              <div class="trace-box" id="trace-post">
+                <div class="empty" data-lang-en class="active">Tool trace will appear here.</div>
+                <div class="empty" data-lang-id>Trace tool akan muncul di sini.</div>
+                <div class="empty" data-lang-cn>工具调用追踪将显示在此。</div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <p class="demo-back">
+        <a href="../">
+          <span data-lang-en class="active">← Back to overview</span>
+          <span data-lang-id>← Kembali ke ringkasan</span>
+          <span data-lang-cn>← 返回概览</span>
+        </a>
+      </p>
+    </main>
+
+    <footer class="wrap">
+      <div data-lang-en class="active">
+        Scripted simulation. No live BMKG/TPI calls in this build.
+      </div>
+      <div data-lang-id>
+        Simulasi ter-skrip. Build ini tidak panggil BMKG/TPI live.
+      </div>
+      <div data-lang-cn>
+        脚本模拟。此构建不调用实时 BMKG/TPI。
+      </div>
+      <div class="small">v0.1 · concept · static demo</div>
+    </footer>
+
+    <script src="../assets/i18n.js?v=2"></script>
+    <script src="demo.js?v=2"></script>
+  </body>
+</html>
